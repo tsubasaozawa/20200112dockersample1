@@ -10,6 +10,8 @@ jobs:
           BUNDLE_RETRY: 3
       - image: circleci/mysql:5.7
         environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
           MYSQL_USER: root
           MYSQL_ROOT_PASSWORD: root
     working_directory: ~/repo

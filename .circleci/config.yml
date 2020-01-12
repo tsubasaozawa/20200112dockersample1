@@ -8,13 +8,12 @@ jobs:
           BUNDLER_VERSION: 2.0.2
           BUNDLE_JOBS: 4
           BUNDLE_RETRY: 3
-          RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          MYSQL_USER: root
-          MYSQL_ROOT_PASSWORD: root
-
+          
       - image: circleci/mysql:5.7
-      
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: root
     working_directory: ~/repo
     steps:
       - checkout

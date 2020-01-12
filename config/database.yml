@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: root
-  socket: /tmp/mysql.sock
+  host: db
 
 development:
   <<: *default
@@ -26,10 +26,14 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  username: <%= ENV['DB_USERNAME'] || 'root' %>
-  password: <%= ENV['DB_PASSWORD'] || 'root' %>
-  host: <%= ENV['DB_HOST'] || 'localhost' %>
   database: app_name_test
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: app_test
+  username: root
+  password:
+  host: 127.0.0.1
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
